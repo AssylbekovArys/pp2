@@ -10,3 +10,13 @@ x.reverse()
 #print (x)
 print(x[::3])
 """
+import re
+
+text = "hello my abbd hey ey ab"
+pattern = r'[aA][bB]' # ab => bc
+# r = removes all /
+
+text = re.sub(pattern, 'bc', text) #it changes the pattern where 'a' and 'b' steps it an oreder
+
+with open('data.txt', mode='w', encoding = 'UTF') as f:
+    f.write(text)
