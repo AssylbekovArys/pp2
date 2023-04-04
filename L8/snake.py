@@ -6,9 +6,9 @@ level = 1
 mon = 800
 size = 50
 fps = 60
-bg = pygame.image.load("background.jpg")
+bg = pygame.image.load("C:/Users/acer/Desktop/git lessin/L8/background.jpg")
 bg = pygame.transform.scale(bg,(800,800)) 
-pygame.mixer.music.load('a.mp3')
+pygame.mixer.music.load('C:/Users/acer/Desktop/git lessin/L8/a.mp3')
 pygame.mixer.music.play(-1)
 x,y = 100,100
 length = 1
