@@ -21,10 +21,10 @@ SPEEDCOIN2 = 5
 SCORE = 0
 NUMBERCOIN = 0
 # Настройка шрифтов
-font = pygame.font.Font('10922.otf', 90)
+font = pygame.font.Font('C:/Users/acer/Desktop/git lessin/L9/10922.otf', 90)
 font_small = pygame.font.SysFont("Verdana", 20)
 game_over = font.render("Game Over", True, BLACK)
-background = pygame.image.load("AnimatedStreet.png")
+background = pygame.image.load("C:/Users/acer/Desktop/git lessin/L9/AnimatedStreet.png")
 # Создайте белый экран
 DISPLAYSURF = pygame.display.set_mode((400, 600))
 DISPLAYSURF.fill(WHITE)
@@ -33,7 +33,7 @@ pygame.display.set_caption("Game")
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("Enemy.png")
+        self.image = pygame.image.load("C:/Users/acer/Desktop/git lessin/L9/Enemy.png")
         self.rect = self.image.get_rect()
         self.rect.center = (random.randint(40, SCREEN_WIDTH-40), 0) #gde ono budet poyiavitca
 
@@ -52,7 +52,7 @@ class Enemy(pygame.sprite.Sprite):
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("Player.png")
+        self.image = pygame.image.load("C:/Users/acer/Desktop/git lessin/L9/Player.png")
         self.rect = self.image.get_rect()
         self.rect.center = (160, 520) #gde ono budet poyiavitca
     def move(self):
@@ -72,7 +72,7 @@ class Player(pygame.sprite.Sprite):
 class Coin(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("bitcoin.png")
+        self.image = pygame.image.load("C:/Users/acer/Desktop/git lessin/L9/bitcoin.png")
         self.image = pygame.transform.scale(self.image, (30, 30))
         self.rect = self.image.get_rect()
         self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)#gde ono budet poyiavitca
@@ -92,7 +92,7 @@ class Coin(pygame.sprite.Sprite):
 class Coin2(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("coin2.png")
+        self.image = pygame.image.load("C:/Users/acer/Desktop/git lessin/L9/coin2.png")
         self.image = pygame.transform.scale(self.image, (30, 30))
         self.rect = self.image.get_rect()
         self.rect.center = (random.randint(20, SCREEN_WIDTH - 60), 0)#gde ono budet poyiavitca
@@ -147,11 +147,11 @@ while True:
     # Выполняется, если происходит столкновение между игроком и противником
     if pygame.sprite.spritecollideany(P1, enemies):
         #Простая проверка, пересекает ли спрайт что-либо в группе.
-        pygame.mixer.Sound('crash.wav').play()
+        pygame.mixer.Sound('C:/Users/acer/Desktop/git lessin/L9/crash.wav').play()
         time.sleep(1)
 
         DISPLAYSURF.fill(RED)
-        pygame.mixer.Sound('game_over_theme.mp3').play()
+        pygame.mixer.Sound('C:/Users/acer/Desktop/git lessin/L9/game_over_theme.mp3').play()
         DISPLAYSURF.blit(game_over, (30, 250))
 
         pygame.display.update()
@@ -165,12 +165,12 @@ while True:
     if pygame.sprite.spritecollideany(P1, coins):
         NUMBERCOIN += 1
         SPEEDENEMY += 1
-        pygame.mixer.Sound('coin.mp3').play()
+        pygame.mixer.Sound('C:/Users/acer/Desktop/git lessin/L9/coin.mp3').play()
         for entity in coins:
             entity.state = True
     if pygame.sprite.spritecollideany(P1, coins2):
         NUMBERCOIN += 10
-        pygame.mixer.Sound('coin.mp3').play()
+        pygame.mixer.Sound('C:/Users/acer/Desktop/git lessin/L9/coin.mp3').play()
         for entity in coins2:
             entity.state = True
     pygame.display.update()
