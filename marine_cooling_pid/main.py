@@ -559,6 +559,8 @@ def section_6_comparison(tuning_results, all_metrics):
         try:
             T_cl = get_closed_loop(plant, Kp_val, Ki_base, Kd_base)
             t_out, y_out = ctrl.step_response(T_cl, t)
+            if np.any(np.abs(y_out) > 100):
+                continue
             ax.plot(t_out, y_out * SETPOINT, linewidth=1.5,
                     label=f'Kp={Kp_val:.1f}')
         except Exception:
@@ -580,6 +582,8 @@ def section_6_comparison(tuning_results, all_metrics):
         try:
             T_cl = get_closed_loop(plant, Kp_base, Ki_val, Kd_base)
             t_out, y_out = ctrl.step_response(T_cl, t)
+            if np.any(np.abs(y_out) > 100):
+                continue
             ax.plot(t_out, y_out * SETPOINT, linewidth=1.5,
                     label=f'Ki={Ki_val:.2f}')
         except Exception:
@@ -596,11 +600,14 @@ def section_6_comparison(tuning_results, all_metrics):
 
     # Effect of Kd
     ax = axes[2]
-    kd_values = [0, Kd_base * 0.5, Kd_base, Kd_base * 2.0, Kd_base * 5.0]
+    kd_values = [0, Kd_base * 0.3, Kd_base, Kd_base * 1.5, Kd_base * 2.5]
     for Kd_val in kd_values:
         try:
             T_cl = get_closed_loop(plant, Kp_base, Ki_base, Kd_val)
             t_out, y_out = ctrl.step_response(T_cl, t)
+            # Skip unstable responses
+            if np.any(np.abs(y_out) > 100):
+                continue
             ax.plot(t_out, y_out * SETPOINT, linewidth=1.5,
                     label=f'Kd={Kd_val:.4f}')
         except Exception:
